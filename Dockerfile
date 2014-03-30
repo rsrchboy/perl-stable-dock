@@ -7,7 +7,7 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-# temporary workaround until github gugod/App-perlbrew#383 is merged
+# temporary workaround until github gugod/App-perlbrew#383 is released
 RUN perlbrew download 5.18.2
 RUN perlbrew install --as stable stable
 RUN rm -rf /usr/local/perlbrew/build/*
