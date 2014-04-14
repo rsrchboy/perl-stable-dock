@@ -7,18 +7,18 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-# temporary workaround until github gugod/App-perlbrew#383 is released
-RUN perlbrew download 5.18.2
-RUN perlbrew install --as stable stable
+ENV TARGET_PERL 5.16.4
+RUN perlbrew download $TARGET_PERL
+RUN perlbrew install -j4 --as $TARGET_PERL
 RUN rm -rf /usr/local/perlbrew/build/*
 
-RUN perlbrew switch stable
+RUN perlbrew switch $TARGET_PERL
 
-ENV PATH /usr/local/perlbrew/perls/stable/bin:$PATH
-ENV MANPATH /usr/local/perlbrew/perls/stable/man
-ENV PERLBREW_MANPATH /usr/local/perlbrew/perls/stable/man
-ENV PERLBREW_PATH /usr/local/perlbrew/bin:/usr/local/perlbrew/perls/stable/bin
-ENV PERLBREW_PERL stable
+ENV PATH /usr/local/perlbrew/perls/$TARGET_PERL/bin:$PATH
+ENV MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
+ENV PERLBREW_MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
+ENV PERLBREW_PATH /usr/local/perlbrew/bin:/usr/local/perlbrew/perls/$TARGET_PERL/bin
+ENV PERLBREW_PERL $TARGET_PERL
 
 RUN perlbrew info
 RUN perl -v
