@@ -7,9 +7,11 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-ENV TARGET_PERL 5.16.4
-RUN perlbrew download $TARGET_PERL
-RUN perlbrew install -j4 --as $TARGET_PERL
+ENV TARGET_PERL_FULL 5.16.3
+ENV TARGET_PERL      5.16
+
+RUN perlbrew download $TARGET_PERL_FULL
+RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL
 RUN rm -rf /usr/local/perlbrew/build/*
 
 RUN perlbrew switch $TARGET_PERL
