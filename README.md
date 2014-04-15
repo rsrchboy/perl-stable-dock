@@ -1,6 +1,6 @@
-# Perl v5.8 in a box!
+# Perl v5.14 in a box!
 
-This image contains perlbrew, cpanm, and the latest stable Perl v5.8
+This image contains perlbrew, cpanm, and the latest stable Perl v5.14
 at the time of building.
 
 # Profit!
