@@ -8,8 +8,8 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-ENV TARGET_PERL_FULL 5.8.9
-ENV TARGET_PERL      5.8
+ENV TARGET_PERL_FULL 5.19.10
+ENV TARGET_PERL      5.19
 
 RUN perlbrew download $TARGET_PERL_FULL
 RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL
