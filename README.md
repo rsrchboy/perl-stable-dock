@@ -1,16 +1,12 @@
-# Perl v5.16 in a box!
+# Perl v5.8 in a box!
 
-This image contains perlbrew, cpanm, and the latest stable Perl v5.16
+This image contains perlbrew, cpanm, and the latest stable Perl v5.8
 at the time of building.
 
 # Profit!
 
 Enjoy.  Ideas / bugs / suggestions?  Feel free to
 [submit issues or pull requests via github][4] :)
-
-# Author and License
-
-Copyright (c) 2014 by Chris Weyl \<chris.weyl@wps.io\>.
 
 # Author and License
 
