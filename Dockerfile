@@ -12,8 +12,7 @@ ENV TARGET_PERL_FULL 5.18.2
 ENV TARGET_PERL      stable
 
 RUN perlbrew download $TARGET_PERL_FULL
-RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL
-RUN rm -rf /usr/local/perlbrew/build/*
+RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL && rm -rf /usr/local/perlbrew/build/*
 
 RUN perlbrew switch $TARGET_PERL
 
