@@ -5,22 +5,15 @@
 #
 # http://creativecommons.org/licenses/by-sa/4.0/
 
-FROM rsrchboy/perlbrew-base:latest
+FROM rsrchboy/perl-stable:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-ENV TARGET_PERL_FULL 5.18.2
-ENV TARGET_PERL      stable
-
-RUN perlbrew download $TARGET_PERL_FULL
-RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL && rm -rf /usr/local/perlbrew/build/*
-
-RUN perlbrew switch $TARGET_PERL
-
-ENV PATH /usr/local/perlbrew/perls/$TARGET_PERL/bin:$PATH
-ENV MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
-ENV PERLBREW_MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
-ENV PERLBREW_PATH /usr/local/perlbrew/bin:/usr/local/perlbrew/perls/$TARGET_PERL/bin
-ENV PERLBREW_PERL $TARGET_PERL
-
-RUN perlbrew info
-RUN perl -v
+RUN apt-get update && apt-get install -y libmysqlclient-dev libssl-dev libxml-dev
+#RUN perlbrew lib create main && perlbrew list && perlbrew switch ${TARGET_PERL}@main
+RUN cpanm -q --notest Capture::Tiny      && rm -rf ~/.cpanm
+RUN cpanm -q DBI DBD::mysql              && rm -rf ~/.cpanm
+RUN cpanm -q DBIx::Class                 && rm -rf ~/.cpanm
+RUN cpanm -q DBIx::Class::Schema::Loader && rm -rf ~/.cpanm
+RUN cpanm -q Reindeer                    && rm -rf ~/.cpanm
+RUN cpanm -q Dist::Zilla                 && rm -rf ~/.cpanm
+RUN cpanm -q Task::Catalyst              && rm -rf ~/.cpanm
