@@ -16,4 +16,5 @@ RUN cpanm -q DBIx::Class                 && rm -rf ~/.cpanm
 RUN cpanm -q DBIx::Class::Schema::Loader && rm -rf ~/.cpanm
 RUN cpanm -q Reindeer                    && rm -rf ~/.cpanm
 RUN cpanm -q Dist::Zilla                 && rm -rf ~/.cpanm
+RUN cpanm -q Task::Plack                 && rm -rf ~/.cpanm
 RUN cpanm -q Task::Catalyst              && rm -rf ~/.cpanm

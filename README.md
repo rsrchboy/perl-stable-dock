@@ -17,6 +17,7 @@ setting up a working Catalyst app instance.
 * Dist::Zilla
 * Reindeer (for Moose-y goodness!)
 * Task::Catalyst
+* Task::Plack
 
 ## Additional System Packages Installed
 
