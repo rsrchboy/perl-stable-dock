@@ -1,19 +1,38 @@
-# Perl in a box!
+# Perl + Catalyst in a box!
 
-This image contains perlbrew, cpanm, and the latest stable Perl at the time
-of building.
+This image contains perlbrew, cpanm, Task::Catalyst and the latest stable Perl
+(as of building).
 
-As I type, the latest stable version is 5.18.2.
+We're different from the other docker images in that we have a whole mess of
+other modules installed as well, making this container suitable to quickly
+setting up a working Catalyst app instance.
+
+## Additional CPAN Packages Installed
+
+* Capture::Tiny
+* DBD::mysql
+* DBI
+* DBIx::Class
+* DBIx::Class::Schema::Loader
+* Dist::Zilla
+* Reindeer (for Moose-y goodness!)
+* Task::Catalyst
+
+## Additional System Packages Installed
+
+* libmysqlclient-dev
+* libssl-dev
+* libxml-dev
 
 ## Other Perls
 
 If you're looking for pre-built images of other levels of Perl, check out
-[RsrchBoy's Docker index][1] for more "trusted builds".
+[RsrchBoy's Docker index][5] for more "trusted builds".
 
 # Profit!
 
 Enjoy.  Ideas / bugs / suggestions?  Feel free to
-[submit issues or pull requests via github][2] :)
+[submit issues or pull requests via github][4] :)
 
 # Author and License
 
