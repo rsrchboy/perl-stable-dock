@@ -23,7 +23,7 @@ setting up a working Catalyst app instance.
 
 * libmysqlclient-dev
 * libssl-dev
-* libxml-dev
+* libxml2-dev
 
 ## Other Perls
 

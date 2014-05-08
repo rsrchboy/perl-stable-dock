@@ -8,7 +8,7 @@
 FROM rsrchboy/perl-stable:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-RUN apt-get update && apt-get install -y libmysqlclient-dev libssl-dev libxml-dev
+RUN apt-get update && apt-get install -y libmysqlclient-dev libssl-dev libxml2-dev
 #RUN perlbrew lib create main && perlbrew list && perlbrew switch ${TARGET_PERL}@main
 RUN cpanm -q --notest Capture::Tiny      && rm -rf ~/.cpanm
 RUN cpanm -q DBI DBD::mysql              && rm -rf ~/.cpanm
