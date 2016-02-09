@@ -8,19 +8,15 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-ENV TARGET_PERL_FULL 5.22.1
-ENV TARGET_PERL      stable
+ENV PERL5_PATCHPERL_PLUGIN BenchmarkVirtualError
+RUN cpanm -q Devel::PatchPerl::Plugin::BenchmarkVirtualError && rm -rf $HOME/.cpanm/*
 
-RUN perlbrew download $TARGET_PERL_FULL
-RUN perlbrew install -j4 --as $TARGET_PERL $TARGET_PERL_FULL && rm -rf /usr/local/perlbrew/build/*
+RUN for ver in perl-5.23.7 perl-5.22.1 perl-5.20.3 perl-5.18.4 perl-5.16.3 perl-5.14.4 perl-5.12.5 perl-5.10.1 perl-5.8.9 ; do \
+            ( perlbrew install -j4 $ver || exit 1 ) && \
+            perlbrew alias create $ver `echo $ver | sed 's/\..$//'` && \
+            perlbrew alias create $ver `echo $ver | sed 's/\..$//; s/^perl-//'` && \
+            rm -rf /usr/local/perlbrew/build/* ; \
+        done
 
-RUN perlbrew switch $TARGET_PERL
-
-ENV PATH /usr/local/perlbrew/perls/$TARGET_PERL/bin:$PATH
-ENV MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
-ENV PERLBREW_MANPATH /usr/local/perlbrew/perls/$TARGET_PERL/man
-ENV PERLBREW_PATH /usr/local/perlbrew/bin:/usr/local/perlbrew/perls/$TARGET_PERL/bin
-ENV PERLBREW_PERL $TARGET_PERL
-
+RUN perlbrew alias create perl-5.22.1 stable && perlbrew alias create perl-5.23.7 unstable
 RUN perlbrew info
-RUN perl -v
