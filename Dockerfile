@@ -8,7 +8,7 @@
 FROM rsrchboy/perlbrew-base:latest
 MAINTAINER Chris Weyl <chris.weyl@wps.io>
 
-ENV TARGET_PERL_FULL 5.21.0
+ENV TARGET_PERL_FULL 5.23.7
 ENV TARGET_PERL      unstable
 
 RUN perlbrew download $TARGET_PERL_FULL
